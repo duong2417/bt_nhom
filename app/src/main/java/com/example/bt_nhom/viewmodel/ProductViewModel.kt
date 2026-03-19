@@ -3,19 +3,30 @@ package com.example.bt_nhom.viewmodel
 import androidx.lifecycle.ViewModel
 import com.example.bt_nhom.data.NhacCu
 
-class ProductViewModel : ViewModel() {
+class NhacCuViewModel : ViewModel() {
 
-    private val _listNhacCu = mutableListOf<NhacCu>()
+    private val listNhacCu = mutableListOf<NhacCu>()
 
-    fun getAll(): List<NhacCu> {
-        return _listNhacCu
+    fun getAll(): List<NhacCu> = listNhacCu
+
+    fun getById(id: Int): NhacCu? {
+        return listNhacCu.find { it.id == id }
     }
 
     fun add(nhacCu: NhacCu) {
-        _listNhacCu.add(nhacCu)
+        listNhacCu.add(nhacCu)
     }
 
-    fun getById(id: Int): NhacCu? {
-        return _listNhacCu.find { it.id == id }
+    fun delete(id: Int) {
+        listNhacCu.removeAll { it.id == id }
+    }
+
+    fun updateQuantity(id: Int, newQuantity: Int) {
+        val item = getById(id)
+        item?.let {
+            val newItem = it.copy(soLuongTon = newQuantity)
+            val index = listNhacCu.indexOfFirst { it.id == id }
+            listNhacCu[index] = newItem
+        }
     }
 }
