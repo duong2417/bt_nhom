@@ -8,7 +8,7 @@ import com.example.bt_nhom.screens.AddEditScreen
 import com.example.bt_nhom.screens.DetailScreen
 import com.example.bt_nhom.screens.ListScreen
 import com.example.bt_nhom.viewmodel.NhacCuViewModel
-
+//thêm NavHost
 class MainActivity : ComponentActivity() {
 
     private val viewModel = NhacCuViewModel()

@@ -58,7 +58,7 @@ fun AddEditScreen(viewModel: NhacCuViewModel) {
         }
     }
 }
-////
+///bấm lưu → quay về List
 @Composable
 fun AddEditScreen(navController: NavController, viewModel: NhacCuViewModel) {
 

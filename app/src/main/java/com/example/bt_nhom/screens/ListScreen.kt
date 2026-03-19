@@ -49,7 +49,7 @@ fun ListScreen(viewModel: NhacCuViewModel) {
     }
 }
 
-///
+///bấm vào item → sang Detail
 @Composable
 fun ListScreen(navController: NavController, viewModel: NhacCuViewModel) {
 

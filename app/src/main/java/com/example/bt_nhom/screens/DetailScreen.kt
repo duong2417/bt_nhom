@@ -1,9 +1,15 @@
 package com.example.bt_nhom.screens
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.bt_nhom.data.NhacCu
@@ -41,7 +47,8 @@ fun DetailScreen(item: NhacCu, viewModel: NhacCuViewModel) {
         }
     }
 }
-///
+///nhận id từ List
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(id: Int, navController: NavController, viewModel: NhacCuViewModel) {
 
@@ -52,32 +59,52 @@ fun DetailScreen(id: Int, navController: NavController, viewModel: NhacCuViewMod
         return
     }
 
-    Column(modifier = Modifier.padding(16.dp)) {
-
-        Text("Chi tiết nhạc cụ")
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text("Tên: ${item.tenSP}")
-        Text("Mã: ${item.maSP}")
-        Text("Loại: ${item.loaiSP}")
-        Text("Tồn kho: ${item.soLuongTon}")
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Button(onClick = {
-            viewModel.updateQuantity(item.id, item.soLuongTon + 1)
-        }) {
-            Text("Tăng số lượng")
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Chi tiết nhạc cụ") },
+                navigationIcon = {
+                    IconButton(onClick = {
+                        navController.popBackStack()
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
+                }
+            )
         }
+    ) { padding ->
 
-        Spacer(modifier = Modifier.height(10.dp))
+        Column(
+            modifier = Modifier
+                .padding(padding)
+                .padding(16.dp)
+        ) {
 
-        Button(onClick = {
-            viewModel.delete(item.id)
-            navController.popBackStack()
-        }) {
-            Text("Xóa nhạc cụ")
+            Text("Tên: ${item.tenSP}")
+            Text("Mã: ${item.maSP}")
+            Text("Loại: ${item.loaiSP}")
+            Text("Tồn kho: ${item.soLuongTon}")
+            Text("Giá: ${item.giaBan.toInt()} đ")
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Button(onClick = {
+                viewModel.updateQuantity(item.id, item.soLuongTon + 1)
+            }) {
+                Text("Tăng số lượng")
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Button(onClick = {
+                viewModel.delete(item.id)
+                navController.popBackStack()
+            }) {
+                Text("Xóa nhạc cụ")
+            }
         }
     }
 }

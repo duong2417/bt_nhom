@@ -2,10 +2,15 @@ package com.example.bt_nhom.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.bt_nhom.data.NhacCu
+import com.example.bt_nhom.data.fakeData
 
 class NhacCuViewModel : ViewModel() {
 
     private val listNhacCu = mutableListOf<NhacCu>()
+
+    init {
+        listNhacCu.addAll(fakeData)
+    }
 
     fun getAll(): List<NhacCu> = listNhacCu
 
