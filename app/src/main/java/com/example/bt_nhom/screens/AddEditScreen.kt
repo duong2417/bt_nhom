@@ -9,55 +9,6 @@ import androidx.navigation.NavController
 import com.example.bt_nhom.data.NhacCu
 import com.example.bt_nhom.viewmodel.NhacCuViewModel
 
-@Composable
-fun AddEditScreen(viewModel: NhacCuViewModel) {
-
-    var ten by remember { mutableStateOf("") }
-    var ma by remember { mutableStateOf("") }
-    var loai by remember { mutableStateOf("") }
-    var soLuong by remember { mutableStateOf("") }
-
-    Column(modifier = Modifier.padding(16.dp)) {
-
-        Text("Thêm nhạc cụ", style = MaterialTheme.typography.titleLarge)
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        TextField(value = ten, onValueChange = { ten = it }, label = { Text("Tên nhạc cụ") })
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        TextField(value = ma, onValueChange = { ma = it }, label = { Text("Mã sản phẩm") })
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        TextField(value = loai, onValueChange = { loai = it }, label = { Text("Loại nhạc cụ") })
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        TextField(value = soLuong, onValueChange = { soLuong = it }, label = { Text("Số lượng") })
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Button(onClick = {
-
-            val item = NhacCu(
-                id = viewModel.getAll().size + 1,
-                tenSP = ten,
-                maSP = ma,
-                loaiSP = loai,
-                soLuongTon = soLuong.toInt(),
-                giaBan = 0.0,
-//                giaNhap = 0.0
-            )
-
-            viewModel.add(item)
-
-        }) {
-            Text("Lưu nhạc cụ")
-        }
-    }
-}
 ///bấm lưu → quay về List
 @Composable
 fun AddEditScreen(navController: NavController, viewModel: NhacCuViewModel) {

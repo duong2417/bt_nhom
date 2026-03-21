@@ -10,45 +10,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.bt_nhom.viewmodel.NhacCuViewModel
 
-@Composable
-fun ListScreen(viewModel: NhacCuViewModel) {
-
-    val list = viewModel.getAll()
-
-    Column(modifier = Modifier.padding(16.dp)) {
-
-        Text("Danh sách nhạc cụ", style = MaterialTheme.typography.titleLarge)
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(onClick = {
-            // mở màn hình thêm
-        }) {
-            Text("Thêm nhạc cụ")
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        LazyColumn {
-            items(list) { item ->
-
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 12.dp)
-                ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-
-                        Text(item.tenSP)
-                        Text("Mã: ${item.maSP}")
-                        Text("Tồn kho: ${item.soLuongTon}")
-                    }
-                }
-            }
-        }
-    }
-}
-
 ///bấm vào item → sang Detail
 @Composable
 fun ListScreen(navController: NavController, viewModel: NhacCuViewModel) {
