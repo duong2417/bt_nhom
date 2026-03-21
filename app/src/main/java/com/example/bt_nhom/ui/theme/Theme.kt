@@ -4,10 +4,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 /// Đây là nơi kết nối màu sắc vào hệ thống của Android
 private val AppColorScheme = lightColorScheme(
-    background = PaperBg,
-    surface = CardBg,
-    primary = StockGreen,
-    onBackground = TitleColor
+    primary = PrimaryBlue,
+    background = AppBackground,
+    surface = CardWhite,
+    onBackground = TextPrimary,
+    onSurface = TextPrimary
 )
 
 @Composable

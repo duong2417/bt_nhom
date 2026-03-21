@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.bt_nhom.data.NhacCu
+import com.example.bt_nhom.ui.theme.PrimaryBlue
 import com.example.bt_nhom.viewmodel.NhacCuViewModel
 
 ///bấm vào item → sang Detail
@@ -32,11 +33,13 @@ fun ListScreen(navController: NavController, viewModel: NhacCuViewModel) {
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { navController.navigate("add") },
-                containerColor = MaterialTheme.colorScheme.surface
+                containerColor = PrimaryBlue
             ) {
                 Icon(Icons.Default.Add, contentDescription = null)
             }
-        }
+        },
+        floatingActionButtonPosition = FabPosition.End
+
     ) { padding ->
 
         Column(
