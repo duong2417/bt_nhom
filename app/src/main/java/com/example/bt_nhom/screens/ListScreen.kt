@@ -33,12 +33,13 @@ fun ListScreen(navController: NavController, viewModel: NhacCuViewModel) {
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { navController.navigate("add") },
-                containerColor = PrimaryBlue
+                containerColor = PrimaryBlue,
+                shape = RoundedCornerShape(30.dp)
             ) {
                 Icon(Icons.Default.Add, contentDescription = null)
             }
         },
-        floatingActionButtonPosition = FabPosition.End
+//        floatingActionButtonPosition = FabPosition.End
 
     ) { padding ->
 
@@ -68,9 +69,7 @@ fun ListScreen(navController: NavController, viewModel: NhacCuViewModel) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            LazyColumn (
-                contentPadding = PaddingValues(bottom = 200.dp) // cách mép dưới để item cuối trồi lên (tránh bị khuất mất tiêu)
-            ) {
+            LazyColumn () {
                 items(list) { item ->
                     ProductItem(item, navController)
                 }
