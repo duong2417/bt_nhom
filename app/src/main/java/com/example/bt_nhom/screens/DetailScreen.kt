@@ -50,7 +50,8 @@ fun DetailScreen(id: Int, navController: NavController, viewModel: NhacCuViewMod
             Text("Mã: ${item.maSP}")
             Text("Loại: ${item.loaiSP}")
             Text("Tồn kho: ${item.soLuongTon}")
-            Text("Giá: ${item.giaBan.toInt()} đ")
+            Text("Giá: ${item.formatGiaBan()} đ")
+            Text("Giá trị tồn kho: ${item.formatGiaTriTonKho()} đ")
 
             Spacer(modifier = Modifier.height(20.dp))
 
