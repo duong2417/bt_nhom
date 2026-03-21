@@ -19,8 +19,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.bt_nhom.components.AppTextField
 import com.example.bt_nhom.data.NhacCu
-import com.example.bt_nhom.ui.theme.PrimaryBlue
+import com.example.bt_nhom.ui.theme.*
 import com.example.bt_nhom.viewmodel.NhacCuViewModel
 
 ///bấm vào item → sang Detail
@@ -53,18 +54,16 @@ fun ListScreen(navController: NavController, viewModel: NhacCuViewModel) {
 
             Text(
                 "Danh sách Sản phẩm",
-                style = MaterialTheme.typography.titleLarge
+//                style = MaterialTheme.typography.titleLarge
+                style = Typography.titleLarge
             )
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Thanh search giả
-            OutlinedTextField(
-                value = "",
-                onValueChange = {},
-                placeholder = { Text("Tìm sản phẩm, mã, loại...") },
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(30.dp)
+            var searchQuery = ""
+            AppTextField(
+                value = searchQuery,
+                onValueChange = { searchQuery = it }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -109,7 +108,8 @@ fun ProductItem(item: NhacCu, navController: NavController) {
                 modifier = Modifier
                     .size(70.dp)
                     .clip(RoundedCornerShape(14.dp))
-                    .background(Color(0xFFEFE7DB))
+                    .background(LightGrey)
+//                    .background(Color(0xFFEFE7DB))
             ) {
 
                 Image(

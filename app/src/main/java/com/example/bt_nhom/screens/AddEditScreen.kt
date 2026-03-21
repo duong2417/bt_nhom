@@ -6,6 +6,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.bt_nhom.components.AppPrimaryButton
+import com.example.bt_nhom.components.AppTextField
+import com.example.bt_nhom.components.MyAppbar
 import com.example.bt_nhom.data.NhacCu
 import com.example.bt_nhom.viewmodel.NhacCuViewModel
 
@@ -18,48 +21,58 @@ fun AddEditScreen(navController: NavController, viewModel: NhacCuViewModel) {
     var loai by remember { mutableStateOf("") }
     var soLuong by remember { mutableStateOf("") }
 
-    Column(modifier = Modifier.padding(16.dp)) {
+    Scaffold (
+        topBar = {
+            MyAppbar(
+                navController = navController,
+                title = "Thêm nhạc cụ",
+            )
+        }
+    ) {
+        padding ->
+        Column(modifier = Modifier.padding(padding).padding(16.dp)) {
 
-        Text("Thêm nhạc cụ")
+            Spacer(modifier = Modifier.height(16.dp))
 
-        Spacer(modifier = Modifier.height(16.dp))
+            AppTextField(value = ten, onValueChange = { ten = it }, placeholder = "Tên nhạc cụ")
 
-        TextField(value = ten, onValueChange = { ten = it }, label = { Text("Tên") })
+            Spacer(modifier = Modifier.height(10.dp))
 
-        Spacer(modifier = Modifier.height(10.dp))
+            AppTextField(value = ma, onValueChange = { ma = it }, placeholder = "Mã nhạc cụ")
 
-        TextField(value = ma, onValueChange = { ma = it }, label = { Text("Mã") })
+            Spacer(modifier = Modifier.height(10.dp))
 
-        Spacer(modifier = Modifier.height(10.dp))
+            AppTextField(value = loai, onValueChange = { loai = it }, placeholder = "Loại nhạc cụ")
 
-        TextField(value = loai, onValueChange = { loai = it }, label = { Text("Loại") })
+            Spacer(modifier = Modifier.height(10.dp))
 
-        Spacer(modifier = Modifier.height(10.dp))
-
-        TextField(value = soLuong, onValueChange = { soLuong = it }, label = { Text("Số lượng") })
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Button(onClick = {
-
-            val item = NhacCu(
-                id = viewModel.getAll().size + 1,
-                tenSP = ten,
-                maSP = ma,
-                loaiSP = loai,
-                soLuongTon = soLuong.toInt(),
-                giaBan = 0.0,
-                moTa = "",
-                hinhAnh = null
-//                giaNhap = 0.0
+            AppTextField(
+                value = soLuong,
+                onValueChange = { soLuong = it },
+                placeholder = "Số lượng"
             )
 
-            viewModel.add(item)
+            Spacer(modifier = Modifier.height(20.dp))
 
-            navController.popBackStack()
+            AppPrimaryButton(onClick = {
 
-        }) {
-            Text("Lưu nhạc cụ")
+                val item = NhacCu(
+                    id = viewModel.getAll().size + 1,
+                    tenSP = ten,
+                    maSP = ma,
+                    loaiSP = loai,
+                    soLuongTon = soLuong.toInt(),
+                    giaBan = 0.0,
+                    moTa = "",
+                    hinhAnh = null
+                    //                giaNhap = 0.0
+                )
+
+                viewModel.add(item)
+
+                navController.popBackStack()
+
+            }, text = "Lưu nhạc cụ")
         }
     }
 }

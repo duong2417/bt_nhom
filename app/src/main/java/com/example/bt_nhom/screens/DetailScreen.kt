@@ -1,13 +1,13 @@
 package com.example.bt_nhom.screens
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.bt_nhom.components.AppPrimaryButton
+import com.example.bt_nhom.components.MyAppbar
 import com.example.bt_nhom.viewmodel.NhacCuViewModel
 
 ///nhận id từ List
@@ -24,18 +24,9 @@ fun DetailScreen(id: Int, navController: NavController, viewModel: NhacCuViewMod
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("Chi tiết nhạc cụ") },
-                navigationIcon = {
-                    IconButton(onClick = {
-                        navController.popBackStack()
-                    }) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Back"
-                        )
-                    }
-                }
+            MyAppbar(
+                navController = navController,
+                title = "Chi tiết nhạc cụ",
             )
         }
     ) { padding ->
@@ -55,20 +46,16 @@ fun DetailScreen(id: Int, navController: NavController, viewModel: NhacCuViewMod
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Button(onClick = {
+            AppPrimaryButton(text = "Tăng số lượng", onClick = {
                 viewModel.updateQuantity(item.id, item.soLuongTon + 1)
-            }) {
-                Text("Tăng số lượng")
-            }
+            })
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            Button(onClick = {
+            AppPrimaryButton(text = "Xóa nhạc cụ", onClick = {
                 viewModel.delete(item.id)
                 navController.popBackStack()
-            }) {
-                Text("Xóa nhạc cụ")
-            }
+            })
         }
     }
 }
