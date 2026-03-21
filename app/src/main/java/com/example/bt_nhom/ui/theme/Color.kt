@@ -2,10 +2,9 @@ package com.example.bt_nhom.ui.theme
 
 import androidx.compose.ui.graphics.Color
 /// Định nghĩa màu sắc
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val PaperBg = Color(0xFFF4EFE7)
+val CardBg = Color(0xFFF8F3EC)
+val TitleColor = Color(0xFF2B2B2B)
+val SubText = Color(0xFF6B6B6B)
+val StockGreen = Color(0xFF3FA34D)
+val IconGray = Color(0xFF8C8C8C)

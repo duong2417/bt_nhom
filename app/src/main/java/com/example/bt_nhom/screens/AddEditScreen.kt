@@ -49,6 +49,8 @@ fun AddEditScreen(navController: NavController, viewModel: NhacCuViewModel) {
                 loaiSP = loai,
                 soLuongTon = soLuong.toInt(),
                 giaBan = 0.0,
+                moTa = "",
+                hinhAnh = null
 //                giaNhap = 0.0
             )
 
