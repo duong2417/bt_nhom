@@ -18,6 +18,7 @@ fun AppTextField(
     value: String,
     onValueChange: (String) -> Unit,
     placeholder: String = "Tìm sản phẩm, mã, loại...",
+    hasFilled: Boolean = true,
     modifier: Modifier = Modifier
 ) {
 
@@ -41,11 +42,11 @@ fun AppTextField(
         colors = OutlinedTextFieldDefaults.colors(
 
             // màu nền giống ảnh
-            unfocusedContainerColor = LightGrey,
-            focusedContainerColor = LightGrey,
+            unfocusedContainerColor = if (hasFilled) LightGrey else Color.Transparent,
+            focusedContainerColor = if (hasFilled) LightGrey else Color.Transparent,
 
             // màu viền giống ảnh
-            unfocusedBorderColor = Color(0xFFE2E7EB),
+            unfocusedBorderColor = if (hasFilled) LightGrey else Color.Gray,
             focusedBorderColor = BorderGrey,
 
 //            cursorColor = Color.Black,

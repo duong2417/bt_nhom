@@ -141,7 +141,8 @@ fun ProductItem(item: NhacCu, navController: NavController) {
 
                     Text(
                         item.formatGiaBan(),
-                        color = Color(0xFF3FA34D)
+                        color = PrimaryBlue
+//                        color = Color(0xFF3FA34D)
                     )
                 }
             }
